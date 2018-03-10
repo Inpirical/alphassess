@@ -1,8 +1,13 @@
 Package: alphassess
-Title: Tools for the quantitative assessment of equities trading alphas.
+Title: Functions for Assessing Equities Trading Alpha-Signals
 Version: 0.0.0.9000
 Authors@R: 'Johannes Tynes <johannes@inpirical.com> [aut, cre]'
-Description: Tools for the quantitative assessment of equities trading alphas.
+Description: Functions for assessing and developing equities trading alpha signals.
+    In particular functions for assessing alphas similar to those found in
+    Kakushadze, Zura, 101 Formulaic Alphas (December 9, 2015). Wilmott Magazine 2016(84) (2016)
+    72-80, are provided (although those alphas are not reproduced in this package).
+    Alpha argument optimization routines are provided for both window-width and
+    scaling factor variables.
 Depends:
     R (>= 3.3.3)
 Imports:

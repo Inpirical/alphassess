@@ -112,13 +112,13 @@ FCo <- function(x, y, n, stat) {
   # Value: (xts) time series.
 
   # Pick the right running function from the `TTR` package:
-  RunFun <- stringr::str_c("TTR::run", stat) %>% get
+  RunFun <- {if(stat == "Cov") {TTR::runCov} else {TTR::runCor}}
+
   n %<>% floor  
 
   1:ncol(x) %>%
-  llply(function(i) {tryCatch(error=function(e) {
-    xts(rep(NA, nrow(x)), order.by=index(x))}, RunFun(x[,i], y[,i], n=n))}) %>%
-  Reduce(f=cbind)
+  plyr::ldply(function(i) {tryCatch(error=function(e) {
+    rep(NA, nrow(x))}, RunFun(x[,i], y[,i], n=n) %>% zoo::coredata())})
 }
 
 FCov <- function(x, y, n) {FCo(x, y, n, stat="Cov")}

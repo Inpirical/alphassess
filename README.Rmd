@@ -1,6 +1,6 @@
 ---
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![Build Status](https://travis-ci.org/inpirical/alphassess.svg?branch=master)](https://travis-ci.org/inpirical/alphassess)
+[![Build Status](https://travis-ci.org/inpirical/alphassess.svg?branch=master)](https://travis-ci.org/Inpirical/alphassess)
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.3-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/alphassess)](https://cran.r-project.org/package=alphassess)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square)](commits/master)

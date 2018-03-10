@@ -11,8 +11,15 @@
 #' @param r (xts) matrix with logarithmic returns.
 #' @param cap (xts) matrix with market capitalisation values. #FIXME:
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha_common_parameters <- function() {}
 
+
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha1 <- function(k, cl, r) {
   # Argument tests:
@@ -29,6 +36,9 @@ alpha1 <- function(k, cl, r) {
   `-`(0.5)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha2 <- function(k, vol, cl, op) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -40,6 +50,9 @@ alpha2 <- function(k, vol, cl, op) {
     n=k[2]) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha3 <- function(k, op, vol) {
   # Argument tests:
@@ -53,6 +66,9 @@ alpha3 <- function(k, op, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha4 <- function(k, lo) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -62,6 +78,9 @@ alpha4 <- function(k, lo) {
   al1_roll_rank(k[1]) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha5 <- function(k, op, vwap, cl) {
   # Argument tests:
@@ -79,6 +98,9 @@ alpha5 <- function(k, op, vwap, cl) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha6 <- function(k, op, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -87,6 +109,9 @@ alpha6 <- function(k, op, vol) {
   FCor(op, vol, k[1]) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha7 <- function(k, dvol, vol, cl) {
   # Argument tests:
@@ -107,6 +132,9 @@ alpha7 <- function(k, dvol, vol, cl) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha8 <- function(k, op, r) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -118,6 +146,9 @@ alpha8 <- function(k, op, r) {
   al1_rank  %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha9 <- function(k, cl) {
   # Argument tests:
@@ -134,6 +165,9 @@ alpha9 <- function(k, cl) {
       no=(-1 * base::diff(cl, k[1]))))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha10 <- function(k, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -148,6 +182,9 @@ alpha10 <- function(k, cl) {
       no=(-1 * base::diff(cl, k[1]))))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha11 <- function(k, vwap, cl, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -157,6 +194,9 @@ alpha11 <- function(k, vwap, cl, vol) {
   `+`(al1_rank(RcppRoll::roll_minr(vwap - cl, k[1]))) %>%
   `*`(al1_rank(base::diff(vol, k[1])))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha12 <- function(k, vol, cl) {
   # Argument tests:
@@ -169,6 +209,9 @@ alpha12 <- function(k, vol, cl) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha13 <- function(k, cl, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -178,6 +221,9 @@ alpha13 <- function(k, cl, vol) {
   al1_rank %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha14 <- function(k, r, op, vol) {
   # Argument tests:
@@ -190,6 +236,9 @@ alpha14 <- function(k, r, op, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha15 <- function(k, hi, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -201,6 +250,9 @@ alpha15 <- function(k, hi, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha16 <- function(k, hi, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -210,6 +262,9 @@ alpha16 <- function(k, hi, vol) {
   al1_rank %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha17 <- function(k, cl, vol, dvol) {
   # Argument tests:
@@ -229,6 +284,9 @@ alpha17 <- function(k, cl, vol, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha18 <- function(k, cl, op) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -241,6 +299,9 @@ alpha18 <- function(k, cl, op) {
   al1_rank %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha19 <- function(k, cl, r) {
   # Argument tests:
@@ -259,6 +320,9 @@ alpha19 <- function(k, cl, r) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha20 <- function(k, op, hi, lo) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -269,6 +333,9 @@ alpha20 <- function(k, op, hi, lo) {
   `*`(al1_rank(op - stats::lag(lo, k[1]))) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha21 <- function(k, cl, vol, dvol) {
   # Argument tests:
@@ -298,6 +365,9 @@ alpha21 <- function(k, cl, vol, dvol) {
   )}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha22 <- function(k, hi, vol, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -309,6 +379,9 @@ alpha22 <- function(k, hi, vol, cl) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha23 <- function(k, hi) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -319,6 +392,9 @@ alpha23 <- function(k, hi) {
     yes=-base::diff(hi, k[2]),
     no=0)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha24 <- function(k, cl) {
   # Argument tests:
@@ -337,6 +413,9 @@ alpha24 <- function(k, cl) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha25 <- function(k, r, vwap, hi, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -348,6 +427,9 @@ alpha25 <- function(k, r, vwap, hi, cl) {
   `*`(hi - cl) %>%
   al1_rank}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha26 <- function(k, vol, hi) {
   # Argument tests:
@@ -361,6 +443,9 @@ alpha26 <- function(k, vol, hi) {
  RcppRoll::roll_maxr(k[2]) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha27 <- function(k, vol, vwap) {
   # Argument tests:
@@ -378,6 +463,9 @@ alpha27 <- function(k, vol, vwap) {
   base::ifelse(-1, 1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha28 <- function(k, dvol, lo, hi, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -389,6 +477,9 @@ alpha28 <- function(k, dvol, lo, hi, cl) {
   `-`(cl) %>%
   al1_scale}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha29 <- function(k, cl, r) {
   # Argument tests:
@@ -413,6 +504,9 @@ alpha29 <- function(k, cl, r) {
     al1_roll_rank(k[7]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha30 <- function(k, cl, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 5, all(k %% 1 == 0), all(k > 0))
@@ -431,6 +525,9 @@ alpha30 <- function(k, cl, vol) {
   `*`(RcppRoll::roll_sumr(vol, k[4])) %>%
   `/`(RcppRoll::roll_sumr(vol, k[5]))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha31 <- function(k, cl, dvol, lo) {
   # Argument tests:
@@ -454,6 +551,9 @@ alpha31 <- function(k, cl, dvol, lo) {
     base::sign())}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha32 <- function(k, cl) {
   # Argument tests:
   base::stopifnot(
@@ -474,6 +574,9 @@ alpha32 <- function(k, cl) {
     al1_scale)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha33 <- function(k, op, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 0, all(k %% 1 == 0), all(k > 0))
@@ -482,6 +585,9 @@ alpha33 <- function(k, op, cl) {
   (-1 * ((1 - (op / cl)) ^ 1)) %>%
   al1_rank}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha34 <- function(k, r, cl) {
   # Argument tests:
@@ -496,6 +602,9 @@ alpha34 <- function(k, r, cl) {
   al1_rank}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha35 <- function(k, vol, cl, hi, lo, r) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -505,6 +614,9 @@ alpha35 <- function(k, vol, cl, hi, lo, r) {
   `*`(1 - al1_roll_rank(((cl + hi) - lo), k[2])) %>%
   `*`(1 - al1_roll_rank(r, k[1]))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha36 <- function(k, cl, op, vol, vwap, dvol) {
   # Argument tests:
@@ -535,6 +647,9 @@ alpha36 <- function(k, cl, op, vol, vwap, dvol) {
     `*`(k[11]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha37 <- function(k, op, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -547,6 +662,9 @@ alpha37 <- function(k, op, cl) {
   `+`(al1_rank(op - cl))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha38 <- function(k, cl, op) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -557,6 +675,9 @@ alpha38 <- function(k, cl, op) {
   `*`(-1) %>%
   `*`(al1_rank(cl / op))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha39 <- function(k, cl, vol, dvol, r) {
   # Argument tests:
@@ -576,6 +697,9 @@ alpha39 <- function(k, cl, vol, dvol, r) {
     `+`(1))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha40 <- function(k, hi, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -587,6 +711,9 @@ alpha40 <- function(k, hi, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha41 <- function(k, hi, lo, vwap) {
   # Argument tests:
   base::stopifnot(length(k) == 0, all(k %% 1 == 0), all(k > 0))
@@ -594,6 +721,9 @@ alpha41 <- function(k, hi, lo, vwap) {
   # Evaulating the result:
   ((hi * lo)^0.5) - vwap}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha42 <- function(k, vwap, cl) {
   # Argument tests:
@@ -603,6 +733,9 @@ alpha42 <- function(k, vwap, cl) {
       al1_rank(vwap - cl) %>%
   `/`(al1_rank(vwap + cl))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha43 <- function(k, cl, vol, dvol) {
   # Argument tests:
@@ -618,6 +751,9 @@ alpha43 <- function(k, cl, vol, dvol) {
      al1_roll_rank(k[2]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha44 <- function(k, vol, hi) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -627,6 +763,9 @@ alpha44 <- function(k, vol, hi) {
   {FCo(hi, ., n=k[1], stat="Cor")} %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha45 <- function(k, cl, vol) {
   # Argument tests:
@@ -648,6 +787,9 @@ alpha45 <- function(k, cl, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha46 <- function(k, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 3, all(k %% 1 == 0), all(k > 0))
@@ -664,6 +806,9 @@ alpha46 <- function(k, cl) {
       no=-(cl - stats::lag(cl, k[3]))))}}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha47 <- function(k, cl, vol, dvol, hi, vwap) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -677,6 +822,9 @@ alpha47 <- function(k, cl, vol, dvol, hi, vwap) {
     `/`(RcppRoll::roll_sumr(hi, k[2]) / k[2])) %>%
   `-`(al1_rank(vwap - stats::lag(vwap, k[2])))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha48 <- function(k, cl) {
   # Argument tests:
@@ -696,6 +844,9 @@ alpha48 <- function(k, cl) {
     RcppRoll::roll_sumr(k[2]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha49 <- function(k, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 3, all(k %% 1 == 0), all(k > 0))
@@ -709,6 +860,9 @@ alpha49 <- function(k, cl) {
     no=-(cl - stats::lag(cl, k[3])))}}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha50 <- function(k, vol, vwap) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -719,6 +873,9 @@ alpha50 <- function(k, vol, vwap) {
   RcppRoll::roll_maxr(k[1]) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha51 <- function(k, cl, r) {
   # Argument tests:
@@ -732,6 +889,9 @@ alpha51 <- function(k, cl, r) {
     yes=1,
     no=-(cl - stats::lag(cl, k[3])))}}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha52 <- function(k, lo, r, vol) {
   # Argument tests:
@@ -751,6 +911,9 @@ alpha52 <- function(k, lo, r, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha53 <- function(k, cl, lo, hi) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -761,6 +924,9 @@ alpha53 <- function(k, cl, lo, hi) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha54 <- function(k, hi, lo, op, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 1, all(k %% 1 == 0), all(k > 0))
@@ -770,6 +936,9 @@ alpha54 <- function(k, hi, lo, op, cl) {
   `/`((lo - hi) * (cl^k[1])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha55 <- function(k, cl, lo, hi, vol) {
   # Argument tests:
@@ -787,6 +956,9 @@ alpha55 <- function(k, cl, lo, hi, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha56 <- function(k, r, cap) {
   # Argument tests:
   base::stopifnot(length(k) == 3, all(k %% 1 == 0), all(k > 0))
@@ -800,6 +972,9 @@ alpha56 <- function(k, r, cap) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha57 <- function(k, cl, vwap) {
   # Argument tests:
   base::stopifnot(length(k) == 2, all(k %% 1 == 0), all(k > 0))
@@ -812,6 +987,9 @@ alpha57 <- function(k, cl, vwap) {
     RcppRoll::roll_sumr(weights=1:k[2])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha58 <- function(k, vwap, vol) {
   # Argument tests:
@@ -827,6 +1005,9 @@ alpha58 <- function(k, vwap, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha59 <- function(k, vwap, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -841,6 +1022,9 @@ alpha59 <- function(k, vwap, vol) {
   al1_roll_rank(k[5]) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha60 <- function(k, cl, lo, hi, vol) {
   # Argument tests:
@@ -858,6 +1042,9 @@ alpha60 <- function(k, cl, lo, hi, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha61 <- function(k, wvap, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 1, k[1] %% 1 == 0, k[1] > 0)
@@ -872,6 +1059,9 @@ alpha61 <- function(k, wvap, dvol) {
       k[3]) %>%
     al1_rank)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha62 <- function(k, dvol, op, hi, lo) {
   # Argument tests:
@@ -894,6 +1084,9 @@ alpha62 <- function(k, dvol, op, hi, lo) {
     al1_rank) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha63 <- function(k, op, vwap, dvol) {
   # Argument tests:
@@ -918,6 +1111,9 @@ alpha63 <- function(k, op, vwap, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha64 <- function(k, op, dvol, lo, vwap, hi) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -940,6 +1136,9 @@ alpha64 <- function(k, op, dvol, lo, vwap, hi) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha65 <- function(k, op, vwap, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -958,6 +1157,9 @@ alpha65 <- function(k, op, vwap, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha66 <- function(k, vwap, lo, op, hi) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -974,6 +1176,9 @@ alpha66 <- function(k, vwap, lo, op, hi) {
     al1_roll_rank(k[5])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha67 <- function(k, hi, vwap, dvol) {
   # Argument tests:
@@ -995,6 +1200,9 @@ alpha67 <- function(k, hi, vwap, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha68 <- function(k, dvol, cl, lo) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -1013,6 +1221,9 @@ alpha68 <- function(k, dvol, cl, lo) {
     al1_rank) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha69 <- function(k, wvap, cl, dvol) {
   # Argument tests:
@@ -1033,6 +1244,9 @@ alpha69 <- function(k, wvap, cl, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha70 <- function(k, vwap, cl, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 4,
@@ -1049,6 +1263,9 @@ alpha70 <- function(k, vwap, cl, dvol) {
    al1_roll_rank(k[4]))
  `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha71 <- function(k, cl, dvol, vwap, lo, op) {
   # Argument tests:
@@ -1072,6 +1289,9 @@ alpha71 <- function(k, cl, dvol, vwap, lo, op) {
     al1_roll_rank(k[8]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha72 <- function(k, hi, lo, dvol, vol, vwap) {
   # Argument tests:
   base::stopifnot(length(k) == 7,
@@ -1094,6 +1314,9 @@ alpha72 <- function(k, hi, lo, dvol, vol, vwap) {
   )}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha73 <- function(k, vwap, lo, op) {
   # Argument tests:
   base::stopifnot(length(k) == 6,
@@ -1113,6 +1336,9 @@ alpha73 <- function(k, vwap, lo, op) {
     al1_roll_rank(k[6])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha74 <- function(k, dvol, hi, vwap) {
   # Argument tests:
@@ -1136,6 +1362,9 @@ alpha74 <- function(k, dvol, hi, vwap) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha75 <- function(k, vol, lo, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 3,
@@ -1152,6 +1381,9 @@ alpha75 <- function(k, vol, lo, dvol) {
       k[3]) %>%
     al1_rank)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha76 <- function(k, lo, wvap, dvol) {
   # Argument tests:
@@ -1174,6 +1406,9 @@ alpha76 <- function(k, lo, wvap, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha77 <- function(k, hi, lo, vwap, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 4,
@@ -1194,6 +1429,9 @@ alpha77 <- function(k, hi, lo, vwap, dvol) {
     al1_rank
   )}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha78 <- function(k, vwap, lo, dvol, vol) {
   # Argument tests:
@@ -1216,6 +1454,9 @@ alpha78 <- function(k, vwap, lo, dvol, vol) {
     al1_rank)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha79 <- function(k, op, cl, vwap, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 6,
@@ -1236,6 +1477,9 @@ alpha79 <- function(k, op, cl, vwap, dvol) {
    al1_rank)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha80 <- function(k, op, hi, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -1253,6 +1497,9 @@ alpha80 <- function(k, op, hi, dvol) {
     al1_roll_rank(k[5]))
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha81 <- function(k, dvol, vwap, vol) {
   # Argument tests:
@@ -1278,6 +1525,9 @@ alpha81 <- function(k, dvol, vwap, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha82 <- function(k, op, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 6,
@@ -1299,6 +1549,9 @@ alpha82 <- function(k, op, vol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha83 <- function(k, vol, hi, lo, cl) {
   # Argument tests:
   base::stopifnot(length(k) == 2,
@@ -1319,6 +1572,9 @@ alpha83 <- function(k, vol, hi, lo, cl) {
     `/`(vwap - cl))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha84 <- function(k, vwap, cl) {
   # Argument tests:
   base::stopifnot(
@@ -1329,6 +1585,9 @@ alpha84 <- function(k, vwap, cl) {
   al1_roll_rank(k[2]) %>%
   `^`(base::diff(cl, k[3]))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha85 <- function(k, cl, hi, dvol, lo, vol) {
   # Argument tests:
@@ -1349,6 +1608,9 @@ alpha85 <- function(k, cl, hi, dvol, lo, vol) {
   al1_rank)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha86 <- function(k, dvol, cl, op, wvap) {
   # Argument tests:
   base::stopifnot(length(k) == 4,
@@ -1363,6 +1625,9 @@ alpha86 <- function(k, dvol, cl, op, wvap) {
    `<`(al1_rank((op + cl) - (vwap + op))) %>%
    `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha87 <- function(k, wvap, cl, dvol) {
   # Argument tests:
@@ -1385,6 +1650,9 @@ alpha87 <- function(k, wvap, cl, dvol) {
     al1_roll_rank(k[7])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha88 <- function(k, op, lo, hi, cl, dvol) {
   # Argument tests:
@@ -1409,6 +1677,9 @@ alpha88 <- function(k, op, lo, hi, cl, dvol) {
     al1_roll_rank(k[7]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha89 <- function(k, lo, dvol, vwap) {
   # Argument tests:
   base::stopifnot(length(k) == 8,
@@ -1427,6 +1698,9 @@ alpha89 <- function(k, lo, dvol, vwap) {
     al1_roll_rank(k[8]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha90 <- function(k, cl, dvol, lo) {
   # Argument tests:
   base::stopifnot(length(k) == 4,
@@ -1443,6 +1717,9 @@ alpha90 <- function(k, cl, dvol, lo) {
     al1_roll_rank(k[4])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha91 <- function(k, cl, vol, wvap, dvol) {
   # Argument tests:
@@ -1462,6 +1739,9 @@ alpha91 <- function(k, cl, vol, wvap, dvol) {
     al1_rank) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha92 <- function(k, hi, lo, cl, op, dvol) {
   # Argument tests:
@@ -1483,6 +1763,9 @@ alpha92 <- function(k, hi, lo, cl, op, dvol) {
     al1_roll_rank(k[6]))}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha93 <- function(k, cl, vwap, dvol) {
   al1_group_neut(vwap, IndClass.industry) %>%
   # Argument tests:
@@ -1500,6 +1783,9 @@ alpha93 <- function(k, cl, vwap, dvol) {
      RcppRoll::roll_sumr(weights=1:k[7]) %>%
      al1_rank)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha94 <- function(k, wvap, dvol) {
   # Argument tests:
@@ -1520,6 +1806,9 @@ alpha94 <- function(k, wvap, dvol) {
   `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha95 <- function(k, op, dvol, hi, lo) {
   # Argument tests:
   base::stopifnot(length(k) == 5,
@@ -1538,6 +1827,9 @@ alpha95 <- function(k, op, dvol, hi, lo) {
     `^`(5) %>%
     al1_roll_rank(k[5]))}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha96 <- function(k, vwap, vol, cl, dvol) {
   # Argument tests:
@@ -1563,6 +1855,9 @@ alpha96 <- function(k, vwap, vol, cl, dvol) {
  `*`(-1)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha97 <- function(k, vwap, lo, dvol) {
   # Argument tests:
   base::stopifnot(length(k) == 10,
@@ -1585,6 +1880,9 @@ alpha97 <- function(k, vwap, lo, dvol) {
   al1_roll_rank(k[10])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha98 <- function(k, dvol, op) {
   # Argument tests:
@@ -1613,6 +1911,9 @@ alpha98 <- function(k, dvol, op) {
   al1_rank)}
 
 
+#' @inheritParams alpha_common_parameters
+#' @export
+
 alpha99 <- function(k, hi, lo, dvol, vol) {
   # Argument tests:
   base::stopifnot(length(k) == 6,
@@ -1631,6 +1932,9 @@ alpha99 <- function(k, hi, lo, dvol, vol) {
     al1_rank) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha100 <- function(k, cl, dvol, vol) {
   # Argument tests:
@@ -1659,6 +1963,9 @@ alpha100 <- function(k, cl, dvol, vol) {
   `*`(vol / RcppRoll::roll_meanr(dvol, k[5])) %>%
   `*`(-1)}
 
+
+#' @inheritParams alpha_common_parameters
+#' @export
 
 alpha101 <- function(k, cl, op, hi, lo) {
   # Argument tests:

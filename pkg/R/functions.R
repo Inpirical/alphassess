@@ -33,8 +33,7 @@ alpha_run <- function(constants, dat, alpha_fun) {
   base::do.call(what=alpha_fun) %>%
   {dat[[1]][] <- .}
 
-  dat[[1]]
-}
+  dat[[1]]}
 
 
 #' Global function definitions.
@@ -61,7 +60,7 @@ al1_rank <- function(x) {matrixStats::rowRanks(x) / ncol(x)}
 #' @export
 
 al1_roll_rank<- function(x, k) {
-  zoo::rollmeanr(fill=NA, x, k) %>%
+  RcppRoll::roll_meanr(x, k) %>%
   al1_rank
 }
 
@@ -111,7 +110,7 @@ FCo <- function(x, y, n, stat) {
   # Value: (xts) time series.
 
   # Pick the right running function from the `TTR` package:
-  RunFun <- str_c("run", stat) %>% get
+  RunFun <- stringr::str_c("TTR::run", stat) %>% get
   n %<>% floor  
 
   1:ncol(x) %>%
@@ -133,9 +132,7 @@ FCor <- function(x, y, n) {FCo(x, y, n, stat="Cor")}
 al1_scale <- function(x, a=1) {
   scale(x,
     center=FALSE,
-    scale=abs(x) %>% colSums(na.rm=TRUE) %>% `/`(a)
-  )
-}
+    scale=abs(x) %>% colSums(na.rm=TRUE) %>% `/`(a))}
 
 
 #' Neutralisation (demean) by group

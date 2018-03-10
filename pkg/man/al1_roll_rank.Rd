@@ -7,9 +7,7 @@
 al1_roll_rank(x, k)
 }
 \arguments{
-\item{x}{an object (representing a series of observations).}
-
-\item{k}{integer width of the rolling window. Must be odd for \code{rollmedian}.}
+\item{x}{A numeric vector or a numeric matrix.}
 }
 \description{
 Time series rank

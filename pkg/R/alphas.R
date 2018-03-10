@@ -31,7 +31,7 @@ alpha1 <- function(k, cl, r) {
     yes=RcppRoll::roll_sdr(r, k[1]),
     no=cl) %>%
   `^`(2) %>%
-  al1_arg_max(k[2]) %>%
+  al1_whichmax(k[2]) %>%
   al1_rank %>%
   `-`(0.5)}
 
@@ -982,7 +982,7 @@ alpha57 <- function(k, cl, vwap) {
   # Evaulating the result:
   (cl - vwap) %>%
   `/`(
-    al1_arg_max(cl, k[1]) %>%
+    al1_whichmax(cl, k[1]) %>%
     al1_rank %>%
     RcppRoll::roll_sumr(weights=1:k[2])) %>%
   `*`(-1)}
@@ -1036,7 +1036,7 @@ alpha60 <- function(k, cl, lo, hi, vol) {
   al1_scale %>%
   `*`(2) %>%
   `-`(
-    al1_arg_max(cl, k[1]) %>%
+    al1_whichmax(cl, k[1]) %>%
     al1_rank %>%
     al1_scale) %>%
   `*`(-1)}
@@ -1849,7 +1849,7 @@ alpha96 <- function(k, vwap, vol, cl, dvol) {
       al1_roll_rank(cl, k[4]),
       al1_roll_rank(RcppRoll::roll_meanr(dvol, k[5]), k[6]),
       n=k[7]) %>%
-    al1_arg_max(k[8]) %>%
+    al1_whichmax(k[8]) %>%
     RcppRoll::roll_sumr(weights=1:k[9]) %>%
     al1_roll_rank(k[10])) %>%
  `*`(-1)}
@@ -1905,7 +1905,7 @@ alpha98 <- function(k, dvol, op) {
       al1_rank(op),
       RcppRoll::roll_meanr(dvol, k[5]) %>% al1_rank,
       n=k[6]) %>%
-    al1_arg_min(k[7]) %>%
+    al1_whichmin(k[7]) %>%
     al1_roll_rank(k[8]) %>%
     RcppRoll::roll_sumr(weights=1:k[9]) %>%
   al1_rank)}
@@ -1956,7 +1956,7 @@ alpha100 <- function(k, cl, dvol, vol) {
       al1_rank,
       k[3]) %>%
     `-`(
-      al1_arg_min(cl, k[4]) %>%
+      al1_whichmin(cl, k[4]) %>%
       al1_rank) %>%
     al1_group_neut(IndClass.subindustry) %>%
     al1_scale) %>%

@@ -56,7 +56,7 @@ al1_rank <- function(x) {matrixStats::rowRanks(x) / ncol(x)}
 # Rolling Functions ------------------------------------------------------------
 
 #' Time series rank
-#' @inheritParams zoo::rollmeanr
+#' @inheritParams RcppRoll::roll_meanr
 #' @export
 
 al1_roll_rank<- function(x, k) {
@@ -69,12 +69,13 @@ al1_roll_rank<- function(x, k) {
 #' @inheritParams zoo::rollapplyr
 #' @export
 
-al1_arg_max <- function(data, width) {
+al1_whichmax <- function(data, width) {
   zoo::rollapplyr(
     fill=NA,
     data=data,
     width=width,
-    FUN=function(z) {which.max(z) %>% ifelse(length(.), ., NA)})
+    FUN=function(z) {base::max.col(t(z), ties.method="first")},
+    by.column=FALSE)
 }
 
 
@@ -82,12 +83,13 @@ al1_arg_max <- function(data, width) {
 #' @inheritParams zoo::rollapplyr
 #' @export
 
-al1_arg_min <- function(data, width) {
+al1_whichmin <- function(data, width) {
   zoo::rollapplyr(
     fill=NA,
     data=data,
     width=width,
-    FUN=function(z) {which.min(z) %>% ifelse(length(.), ., NA)})
+    FUN=function(z) {base::max.col(t(-z), ties.method="first")},
+    by.column=FALSE)
 }
 
 

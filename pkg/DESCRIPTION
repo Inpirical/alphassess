@@ -1,0 +1,35 @@
+Package: alphassess
+Title: Tools for the quantitative assessment of equities trading alphas.
+Version: 0.0.0.9000
+Authors@R: 'Johannes Tynes <johannes@inpirical.com> [aut, cre]'
+Description: Tools for the quantitative assessment of equities trading alphas.
+Depends:
+    R (>= 3.3.3)
+Imports:
+    plyr,
+    dplyr,
+    magrittr,
+    stringr,
+    knitr,
+    rmarkdown,
+    readr,
+    data.table,
+    xts,
+    quantmod,
+    parallel,
+    TTR,
+    matrixStats,
+    gplots,
+    rvest,
+    NMOF,
+    moments,
+    lubridate,
+    reshape2,
+    RcppRoll
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
